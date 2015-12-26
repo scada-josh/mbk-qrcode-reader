@@ -9,14 +9,34 @@
 import UIKit
 import AVFoundation
 
-class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AVAudioPlayerDelegate {
 
     @IBOutlet weak var lblShowResult: UILabel!
     @IBOutlet weak var myView: UIView!
+    @IBOutlet weak var lblEventName: UILabel!
     
+    @IBOutlet weak var lblLocationName: UILabel!
     var objCaptureSession:AVCaptureSession?
     var objCaptureVideoPreviewLayer:AVCaptureVideoPreviewLayer?
     var vwQRCode:UIView?
+    
+    var myEventName:String!
+    var myLocationName:String!
+    
+    var audioPlayer: AVAudioPlayer!
+    
+    override func viewWillAppear(animated: Bool) {
+        self.lblEventName.text = myEventName
+        self.lblLocationName.text = myLocationName
+        
+        if((objCaptureSession) != nil) {
+            objCaptureSession?.startRunning()
+        }
+        
+        self.loadBeepSound()
+    }
+    
+    
     
     override func viewDidLoad()
     {
@@ -25,6 +45,8 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         self.configureVideoCapture()
         self.addVideoPreviewLayer()
         self.initializeQRView()
+        
+        self.loadBeepSound()
     }
 
     func configureVideoCapture() {
@@ -55,7 +77,7 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     {
         objCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: objCaptureSession)
         objCaptureVideoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        objCaptureVideoPreviewLayer?.frame = view.layer.bounds
+        objCaptureVideoPreviewLayer?.frame = self.myView.layer.bounds
         self.myView.layer.addSublayer(objCaptureVideoPreviewLayer!)
         objCaptureSession?.startRunning()
     }
@@ -80,8 +102,39 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             vwQRCode?.frame = objBarCode.bounds;
             if objMetadataMachineReadableCodeObject.stringValue != nil {
                 lblShowResult.text = objMetadataMachineReadableCodeObject.stringValue
+                
+                objCaptureSession?.stopRunning()
+                
+                if ((audioPlayer) != nil) {
+                    audioPlayer.play()
+                }
+                
             }
         }
+    }
+    
+    // MARK: - Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showEmployeeInfo" {
+            
+            if let destination = segue.destinationViewController as? EmployeeInfoViewController {
+                    print("Hello...")
+            }
+        }
+    }
+    
+    func loadBeepSound(){
+        let soundURL: NSURL = NSBundle.mainBundle().URLForResource("beep", withExtension: "mp3")!
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: soundURL)
+        audioPlayer.delegate = self
+        // audioPlayer.play()
+        audioPlayer.prepareToPlay()
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        audioPlayer = nil
+        performSegueWithIdentifier("showEmployeeInfo", sender: self)
     }
     
 

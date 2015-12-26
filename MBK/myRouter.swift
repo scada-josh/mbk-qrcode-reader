@@ -11,10 +11,10 @@ import Alamofire
 
 enum myRouter: URLRequestConvertible {
     
-    //static let baseURLString:String = "http://192.168.1.39/mbk/build/src/api"
-    static let baseURLString:String = "https://api.github.com"
+    static let baseURLString:String = "http://192.168.1.111/mbk/build/src/api"
+    //static let baseURLString:String = "https://api.github.com"
     
-    case GetEvent() // GET http://localhost/mbk/build/src/api/eventManager/summaryEmployeeByDivision/
+    case GetEvent() // GET http://localhost/mbk/build/src/api/eventManager/listEventForMobile/
     case GetPublic() // GET https://api.github.com/gists/public
     
     var URLRequest: NSMutableURLRequest {
@@ -32,7 +32,7 @@ enum myRouter: URLRequestConvertible {
         let result: (path: String, parameters: [String: AnyObject]?) = {
             switch self {
             case .GetEvent:
-                return ("/eventManager/summaryEmployeeByDivision/", nil)
+                return ("/eventManager/listEventForMobile/", nil)
             case .GetPublic:
                 return ("/gists/public", nil)
             }

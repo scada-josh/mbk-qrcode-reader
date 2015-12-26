@@ -20,6 +20,9 @@
 		D07EAFE31C296069008EE368 /* AlamofireRequest+JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EAFE21C296069008EE368 /* AlamofireRequest+JSONSerializable.swift */; };
 		D07EAFE51C29618D008EE368 /* ResponseJSONObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EAFE41C29618D008EE368 /* ResponseJSONObjectSerializable.swift */; };
 		D07EAFE71C296BEC008EE368 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EAFE61C296BEC008EE368 /* Gist.swift */; };
+		D09948641C2EA5160000CC27 /* EmployeeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09948631C2EA5160000CC27 /* EmployeeInfoViewController.swift */; };
+		D099486B1C2EB02F0000CC27 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D099486A1C2EB02F0000CC27 /* beep.mp3 */; };
+		D0F886F41C298D4F000CB503 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F886F31C298D4F000CB503 /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		D07EAFE21C296069008EE368 /* AlamofireRequest+JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+JSONSerializable.swift"; sourceTree = "<group>"; };
 		D07EAFE41C29618D008EE368 /* ResponseJSONObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseJSONObjectSerializable.swift; sourceTree = "<group>"; };
 		D07EAFE61C296BEC008EE368 /* Gist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		D09948631C2EA5160000CC27 /* EmployeeInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmployeeInfoViewController.swift; path = Controllers/EmployeeInfoViewController.swift; sourceTree = "<group>"; };
+		D099486A1C2EB02F0000CC27 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		D0F886F31C298D4F000CB503 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FBDB93FA3AB001AB42219336 /* Pods_MBK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,21 +98,64 @@
 		D07EAFC31C28593C008EE368 /* MBK */ = {
 			isa = PBXGroup;
 			children = (
+				D099485F1C2E4BD70000CC27 /* Models */,
+				D09948601C2E4BEC0000CC27 /* Views */,
+				D099485E1C2E4B8C0000CC27 /* Controllers */,
+				D099485D1C2E4B840000CC27 /* API */,
+				D09948691C2EB02F0000CC27 /* Resource */,
 				D07EAFC41C28593C008EE368 /* AppDelegate.swift */,
-				D07EAFC61C28593C008EE368 /* ViewController.swift */,
-				D07EAFE01C295086008EE368 /* QRCodeReader.swift */,
 				D07EAFC81C28593C008EE368 /* Main.storyboard */,
-				D07EAFD61C2876F1008EE368 /* APIManager.swift */,
-				D07EAFDA1C2878C6008EE368 /* myRouter.swift */,
-				D07EAFE21C296069008EE368 /* AlamofireRequest+JSONSerializable.swift */,
-				D07EAFE41C29618D008EE368 /* ResponseJSONObjectSerializable.swift */,
-				D07EAFDC1C287D70008EE368 /* EmployeeSummary.swift */,
-				D07EAFE61C296BEC008EE368 /* Gist.swift */,
 				D07EAFCB1C28593C008EE368 /* Assets.xcassets */,
 				D07EAFCD1C28593C008EE368 /* LaunchScreen.storyboard */,
 				D07EAFD01C28593C008EE368 /* Info.plist */,
 			);
 			path = MBK;
+			sourceTree = "<group>";
+		};
+		D099485D1C2E4B840000CC27 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D07EAFE41C29618D008EE368 /* ResponseJSONObjectSerializable.swift */,
+				D07EAFE21C296069008EE368 /* AlamofireRequest+JSONSerializable.swift */,
+				D07EAFD61C2876F1008EE368 /* APIManager.swift */,
+				D07EAFDA1C2878C6008EE368 /* myRouter.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		D099485E1C2E4B8C0000CC27 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D07EAFC61C28593C008EE368 /* ViewController.swift */,
+				D07EAFE01C295086008EE368 /* QRCodeReader.swift */,
+				D09948631C2EA5160000CC27 /* EmployeeInfoViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D099485F1C2E4BD70000CC27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D07EAFE61C296BEC008EE368 /* Gist.swift */,
+				D07EAFDC1C287D70008EE368 /* EmployeeSummary.swift */,
+				D0F886F31C298D4F000CB503 /* Event.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D09948601C2E4BEC0000CC27 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D09948691C2EB02F0000CC27 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D099486A1C2EB02F0000CC27 /* beep.mp3 */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +221,7 @@
 			files = (
 				D07EAFCF1C28593C008EE368 /* LaunchScreen.storyboard in Resources */,
 				D07EAFCC1C28593C008EE368 /* Assets.xcassets in Resources */,
+				D099486B1C2EB02F0000CC27 /* beep.mp3 in Resources */,
 				D07EAFCA1C28593C008EE368 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,8 +283,10 @@
 			files = (
 				D07EAFD71C2876F1008EE368 /* APIManager.swift in Sources */,
 				D07EAFC71C28593C008EE368 /* ViewController.swift in Sources */,
+				D09948641C2EA5160000CC27 /* EmployeeInfoViewController.swift in Sources */,
 				D07EAFE71C296BEC008EE368 /* Gist.swift in Sources */,
 				D07EAFC51C28593C008EE368 /* AppDelegate.swift in Sources */,
+				D0F886F41C298D4F000CB503 /* Event.swift in Sources */,
 				D07EAFDB1C2878C6008EE368 /* myRouter.swift in Sources */,
 				D07EAFE31C296069008EE368 /* AlamofireRequest+JSONSerializable.swift in Sources */,
 				D07EAFE11C295086008EE368 /* QRCodeReader.swift in Sources */,

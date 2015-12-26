@@ -30,5 +30,12 @@ class APIManager {
             }
     }
     
+    func getEvents(completionHandler: (Result<[Event], NSError>) -> Void) {
+        Alamofire.request(myRouter.GetEvent())
+            .responseArray { (response:Response<[Event], NSError>) in
+                completionHandler(response.result)
+        }
+    }
+    
     
 }

@@ -12,7 +12,13 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var gists = [Gist]()
+    //var gists = [Gist]()
+    var gists = [Event]()
+    
+    // เก็บตัวแปรสำหรับแสดงชื่อ Event
+    var tmpEventName:String!
+    // เก็บตัวแปรสำหรับแสดงสถานที่จัดงาน
+    var tmpLocationName:String!
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -22,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.myTableView.delegate = self
         self.myTableView.dataSource = self
+        
         
         
 //        Alamofire.request(.GET, "https://httpbin.org/get", parameters: ["foo": "bar"])
@@ -79,7 +86,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func btnGetListEvents(sender: AnyObject) {
                     
-            let postEndpoint: String = "http://169.254.122.130/mbk/build/src/api/eventManager/listEvent/"
+            let postEndpoint: String = "http://192.168.1.111/mbk/build/src/api/eventManager/listEvent/"
             Alamofire.request(.POST, postEndpoint)
             .responseJSON { response in
                     
@@ -109,41 +116,58 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+//    func loadGists_tmp2() {
+//        //APIManager.sharedInstance.printPublicGists()
+//        
+//        APIManager.sharedInstance.getPublicGists() { result in
+//                
+//                guard result.error == nil else {
+//                    print(result.error)
+//                    // TODO: display error
+//                    return
+//                }
+//                
+//                if let fetchedGists = result.value {
+//                    self.gists = fetchedGists
+//                }
+//                self.myTableView.reloadData()
+//        }
+//    }
+    
+    
+//    func loadGists_tmp() {
+//        //APIManager.sharedInstance.printPublicGists()
+//        
+//        APIManager.sharedInstance.getPublicGists() { result in
+//            
+//            guard result.error == nil else {
+//                print(result.error)
+//                // TODO: display error
+//                return
+//            }
+//            
+//            if let fetchedGists = result.value {
+//                self.gists = fetchedGists
+//            }
+//            self.myTableView.reloadData()
+//        }
+//    }
+    
+    
     func loadGists() {
-        //APIManager.sharedInstance.printPublicGists()
-        
-        APIManager.sharedInstance.getPublicGists() { result in
-                
-                guard result.error == nil else {
-                    print(result.error)
-                    // TODO: display error
-                    return
-                }
-                
-                if let fetchedGists = result.value {
-                    self.gists = fetchedGists
-                }
-                self.myTableView.reloadData()
-        }
-    }
-    
-    
-    func loadGists_tmp() {
-            let gist1 = Gist()
-                gist1.description = "The first gist"
-                gist1.ownerLogin = "gist1Owner"
-                        
-            let gist2 = Gist()
-                gist2.description = "The second gist"
-                gist2.ownerLogin = "gist2Owner"
-                        
-            let gist3 = Gist()
-                gist3.description = "The third gist"
-                gist3.ownerLogin = "gist3Owner"
+        APIManager.sharedInstance.getEvents() { result in
             
-            gists = [gist1, gist2, gist3]
-            // Tell the table view to reload
+            guard result.error == nil else {
+                print(result.error)
+                // TODO: display error
+                return
+            }
+            
+            if let fetchedGists = result.value {
+                self.gists = fetchedGists
+            }
             self.myTableView.reloadData()
+        }
     }
     
     
@@ -165,19 +189,48 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = myTableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
             let gist = gists[indexPath.row]
-            cell.textLabel!.text = gist.description
-            cell.detailTextLabel!.text = gist.ownerLogin
+            cell.textLabel!.text = gist.event_name_th
+            cell.detailTextLabel!.text = gist.event_location
                     
             // TODO: set cell.imageView to display image at gist.ownerAvatarURL
             return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        print("You selected cell #\(row)!");
+        
+//        // Get Cell Label
+//        let indexPath = tableView.indexPathForSelectedRow;
+//        let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!;
+//        
+//        tmpEventName = currentCell.textLabel!.text
+//        performSegueWithIdentifier("showDetail", sender: self)
+    }
+    
+
     
     
     // MARK: - Segues
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
                     
             if segue.identifier == "showDetail" {
-                        print("Hello world");
+                
+                if let destination = segue.destinationViewController as? QRCodeReader {
+                    if let myIndex = myTableView.indexPathForSelectedRow?.row {
+                        destination.myEventName = gists[myIndex].event_name_th
+                        destination.myLocationName = gists[myIndex].event_location
+                    }
+                }
+                
+//                // initialize new view controller and cast it as your view controller
+//                let destVC = segue.destinationViewController as! QRCodeReader
+//                // your new view controller should have property that will store passed value
+//                destVC.myEventName = tmpEventName
+//                destVC.myLocationName = tmpLocationName
             }
     }
 
