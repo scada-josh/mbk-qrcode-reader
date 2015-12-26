@@ -16,6 +16,11 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AV
     @IBOutlet weak var lblEventName: UILabel!
     
     @IBOutlet weak var lblLocationName: UILabel!
+    
+    @IBOutlet weak var outletScanQRCode: UIButton!
+    @IBOutlet weak var imageDecoration001: UIView!
+    
+    
     var objCaptureSession:AVCaptureSession?
     var objCaptureVideoPreviewLayer:AVCaptureVideoPreviewLayer?
     var vwQRCode:UIView?
@@ -47,6 +52,30 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AV
         self.initializeQRView()
         
         self.loadBeepSound()
+        
+        /*******************************************/
+        /******** View Count Booth Visitor *********/
+        /*******************************************/
+        // border radius
+        self.myView.layer.cornerRadius = 10.0
+        
+        // border
+        self.myView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.myView.layer.borderWidth = 1.5
+        
+        // drop shadow
+        self.myView.layer.shadowColor = UIColor.grayColor().CGColor
+        self.myView.layer.shadowOpacity = 0.8
+        self.myView.layer.shadowRadius = 3.0
+        self.myView.layer.shadowOffset = CGSizeMake(2.0, 2.0)
+        
+        self.myView.layer.masksToBounds = true
+        
+        
+        
+        self.imageDecoration001.layer.zPosition = CGFloat(MAXFLOAT)+100;
+        self.outletScanQRCode.layer.zPosition = CGFloat(MAXFLOAT)+101;
+        
     }
 
     func configureVideoCapture() {
@@ -137,5 +166,7 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AV
         performSegueWithIdentifier("showEmployeeInfo", sender: self)
     }
     
+    @IBAction func btnScanQRCode(sender: AnyObject) {
+    }
 
 }

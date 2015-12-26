@@ -11,7 +11,7 @@ import Alamofire
 
 enum myRouter: URLRequestConvertible {
     
-    static let baseURLString:String = "http://192.168.1.111/mbk/build/src/api"
+    static let baseURLString:String = "http://192.168.1.35/mbk/build/src/api"
     //static let baseURLString:String = "https://api.github.com"
     
     case GetEvent() // GET http://localhost/mbk/build/src/api/eventManager/listEventForMobile/
