@@ -14,14 +14,17 @@ enum myRouter: URLRequestConvertible {
     static let baseURLString:String = "http://192.168.1.35/mbk/build/src/api"
     //static let baseURLString:String = "https://api.github.com"
     
-    case GetEvent() // GET http://localhost/mbk/build/src/api/eventManager/listEventForMobile/
-    case GetPublic() // GET https://api.github.com/gists/public
+    case GetEvent()     // GET http://localhost/mbk/build/src/api/eventManager/listEventForMobile/
+    case GetUserByID(String)  // GET http://localhost/mbk/build/src/api/userManager/getUserByID/:userID
+    case GetPublic()    // GET https://api.github.com/gists/public
     
     var URLRequest: NSMutableURLRequest {
         
         var method: Alamofire.Method {
             switch self {
             case .GetEvent:
+                return .GET
+            case .GetUserByID:
                 return .GET
             case .GetPublic:
                 return .GET
@@ -33,6 +36,8 @@ enum myRouter: URLRequestConvertible {
             switch self {
             case .GetEvent:
                 return ("/eventManager/listEventForMobile/", nil)
+            case .GetUserByID(let userID):
+                return ("/userManager/getUserByID/\(userID)", nil)
             case .GetPublic:
                 return ("/gists/public", nil)
             }

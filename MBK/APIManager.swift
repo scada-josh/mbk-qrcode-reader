@@ -37,5 +37,26 @@ class APIManager {
         }
     }
     
+    func getUserByID(userID: String?, completionHandler: (Result<[UserInfo], NSError>) -> Void) {
+        
+        if let tmpUserID = userID {
+            
+//            Alamofire.request(myRouter.GetUserByID(tmpUserID))
+//                .responseString { response in
+//                    if let receivedString = response.result.value {
+//                        print(receivedString)
+//                    }
+//            }
+            Alamofire.request(myRouter.GetUserByID(tmpUserID))
+                .responseArray { (response:Response<[UserInfo], NSError>) in
+                    completionHandler(response.result)
+            }
+            
+        }
+
+    }
+    
+    
+    
     
 }

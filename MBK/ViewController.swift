@@ -15,10 +15,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //var gists = [Gist]()
     var gists = [Event]()
     
+    
     // เก็บตัวแปรสำหรับแสดงชื่อ Event
     var tmpEventName:String!
     // เก็บตัวแปรสำหรับแสดงสถานที่จัดงาน
     var tmpLocationName:String!
+    
+    @IBAction func btnGoToHome(sender: AnyObject) {
+//        if let navigationController = self.navigationController
+//        {
+//            navigationController.popViewControllerAnimated(true)
+//        }
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -168,12 +177,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             self.myTableView.reloadData()
         }
+        
     }
+    
+    
+
     
     
     override func viewDidAppear(animated: Bool) {
                 super.viewDidAppear(animated)
                 loadGists()
+                
     }
     
     
@@ -221,6 +235,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 if let destination = segue.destinationViewController as? QRCodeReader {
                     if let myIndex = myTableView.indexPathForSelectedRow?.row {
+                        
+                        destination.myEventID = gists[myIndex].event_id
                         destination.myEventName = gists[myIndex].event_name_th
                         destination.myLocationName = gists[myIndex].event_location
                     }

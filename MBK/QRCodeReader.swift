@@ -25,10 +25,13 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AV
     var objCaptureVideoPreviewLayer:AVCaptureVideoPreviewLayer?
     var vwQRCode:UIView?
     
+    var myEventID:String!
     var myEventName:String!
     var myLocationName:String!
     
     var audioPlayer: AVAudioPlayer!
+    
+    var qrcode_text: String!
     
     override func viewWillAppear(animated: Bool) {
         self.lblEventName.text = myEventName
@@ -131,6 +134,7 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AV
             vwQRCode?.frame = objBarCode.bounds;
             if objMetadataMachineReadableCodeObject.stringValue != nil {
                 lblShowResult.text = objMetadataMachineReadableCodeObject.stringValue
+                qrcode_text = objMetadataMachineReadableCodeObject.stringValue
                 
                 objCaptureSession?.stopRunning()
                 
@@ -148,7 +152,9 @@ class QRCodeReader: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AV
         if segue.identifier == "showEmployeeInfo" {
             
             if let destination = segue.destinationViewController as? EmployeeInfoViewController {
-                    print("Hello...")
+                    //print("Hello...")
+                    destination.myEventID = myEventID
+                    destination.myQRcode = qrcode_text
             }
         }
     }

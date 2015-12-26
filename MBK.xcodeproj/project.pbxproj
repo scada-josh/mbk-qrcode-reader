@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C43E493C90368BA4BA143553 /* Pods_MBK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBDB93FA3AB001AB42219336 /* Pods_MBK.framework */; };
+		D026B8311C2F3E09006F7C67 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026B8301C2F3E09006F7C67 /* UserInfo.swift */; };
+		D06379271C2F03A3002EA261 /* rockoflf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D06379251C2F03A3002EA261 /* rockoflf.ttf */; };
+		D06379281C2F03A3002EA261 /* SukhumvitSet.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D06379261C2F03A3002EA261 /* SukhumvitSet.ttc */; };
+		D063792A1C2F17BD002EA261 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06379291C2F17BD002EA261 /* LoginViewController.swift */; };
+		D063792C1C2F18E2002EA261 /* WorkTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D063792B1C2F18E2002EA261 /* WorkTypeViewController.swift */; };
 		D07EAFC51C28593C008EE368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EAFC41C28593C008EE368 /* AppDelegate.swift */; };
 		D07EAFC71C28593C008EE368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EAFC61C28593C008EE368 /* ViewController.swift */; };
 		D07EAFCA1C28593C008EE368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D07EAFC81C28593C008EE368 /* Main.storyboard */; };
@@ -28,6 +33,11 @@
 /* Begin PBXFileReference section */
 		1E8103E5F5F829FDF2DC9EAC /* Pods-MBK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBK/Pods-MBK.debug.xcconfig"; sourceTree = "<group>"; };
 		8B301A74B83369D568AE2FB9 /* Pods-MBK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBK.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBK/Pods-MBK.release.xcconfig"; sourceTree = "<group>"; };
+		D026B8301C2F3E09006F7C67 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = Models/UserInfo.swift; sourceTree = "<group>"; };
+		D06379251C2F03A3002EA261 /* rockoflf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rockoflf.ttf; sourceTree = "<group>"; };
+		D06379261C2F03A3002EA261 /* SukhumvitSet.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = SukhumvitSet.ttc; sourceTree = "<group>"; };
+		D06379291C2F17BD002EA261 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
+		D063792B1C2F18E2002EA261 /* WorkTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorkTypeViewController.swift; path = Controllers/WorkTypeViewController.swift; sourceTree = "<group>"; };
 		D07EAFC11C28593C008EE368 /* MBK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07EAFC41C28593C008EE368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D07EAFC61C28593C008EE368 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +87,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D06379241C2F03A3002EA261 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D06379251C2F03A3002EA261 /* rockoflf.ttf */,
+				D06379261C2F03A3002EA261 /* SukhumvitSet.ttc */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		D07EAFB81C28593C008EE368 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +136,8 @@
 			children = (
 				D07EAFE41C29618D008EE368 /* ResponseJSONObjectSerializable.swift */,
 				D07EAFE21C296069008EE368 /* AlamofireRequest+JSONSerializable.swift */,
-				D07EAFD61C2876F1008EE368 /* APIManager.swift */,
 				D07EAFDA1C2878C6008EE368 /* myRouter.swift */,
+				D07EAFD61C2876F1008EE368 /* APIManager.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -126,6 +145,8 @@
 		D099485E1C2E4B8C0000CC27 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D06379291C2F17BD002EA261 /* LoginViewController.swift */,
+				D063792B1C2F18E2002EA261 /* WorkTypeViewController.swift */,
 				D07EAFC61C28593C008EE368 /* ViewController.swift */,
 				D07EAFE01C295086008EE368 /* QRCodeReader.swift */,
 				D09948631C2EA5160000CC27 /* EmployeeInfoViewController.swift */,
@@ -139,6 +160,7 @@
 				D07EAFE61C296BEC008EE368 /* Gist.swift */,
 				D07EAFDC1C287D70008EE368 /* EmployeeSummary.swift */,
 				D0F886F31C298D4F000CB503 /* Event.swift */,
+				D026B8301C2F3E09006F7C67 /* UserInfo.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -153,6 +175,7 @@
 		D09948691C2EB02F0000CC27 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				D06379241C2F03A3002EA261 /* fonts */,
 				D099486A1C2EB02F0000CC27 /* beep.mp3 */,
 			);
 			path = Resource;
@@ -222,7 +245,9 @@
 				D07EAFCF1C28593C008EE368 /* LaunchScreen.storyboard in Resources */,
 				D07EAFCC1C28593C008EE368 /* Assets.xcassets in Resources */,
 				D099486B1C2EB02F0000CC27 /* beep.mp3 in Resources */,
+				D06379281C2F03A3002EA261 /* SukhumvitSet.ttc in Resources */,
 				D07EAFCA1C28593C008EE368 /* Main.storyboard in Resources */,
+				D06379271C2F03A3002EA261 /* rockoflf.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D063792A1C2F17BD002EA261 /* LoginViewController.swift in Sources */,
 				D07EAFD71C2876F1008EE368 /* APIManager.swift in Sources */,
 				D07EAFC71C28593C008EE368 /* ViewController.swift in Sources */,
 				D09948641C2EA5160000CC27 /* EmployeeInfoViewController.swift in Sources */,
@@ -292,6 +318,8 @@
 				D07EAFE11C295086008EE368 /* QRCodeReader.swift in Sources */,
 				D07EAFE51C29618D008EE368 /* ResponseJSONObjectSerializable.swift in Sources */,
 				D07EAFDD1C287D70008EE368 /* EmployeeSummary.swift in Sources */,
+				D026B8311C2F3E09006F7C67 /* UserInfo.swift in Sources */,
+				D063792C1C2F18E2002EA261 /* WorkTypeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
