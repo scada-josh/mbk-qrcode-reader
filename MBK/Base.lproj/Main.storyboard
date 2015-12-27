@@ -236,7 +236,7 @@
                                     <constraint firstAttribute="height" constant="30" id="zhs-90-olT"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="d9e-uV-4E4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event-logo-100x100" translatesAutoresizingMaskIntoConstraints="NO" id="d9e-uV-4E4">
                                 <rect key="frame" x="490" y="425" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="iEH-cw-89u"/>
@@ -251,7 +251,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Ux-M8-Kk3" firstAttribute="top" secondItem="d9e-uV-4E4" secondAttribute="bottom" constant="15" id="1y9-SC-PUE"/>
                             <constraint firstItem="bFJ-Eb-gx3" firstAttribute="top" secondItem="7Ux-M8-Kk3" secondAttribute="bottom" id="2Nd-Lx-gQi"/>
@@ -793,7 +793,7 @@
         <image name="background-Tab04" width="320" height="50"/>
         <image name="background-tab-bar" width="320" height="30"/>
         <image name="buttonQRCodeScan" width="76" height="60"/>
-        <image name="logo" width="100" height="100"/>
+        <image name="event-logo-100x100" width="100" height="100"/>
         <image name="logo-conference" width="250" height="100"/>
         <image name="logo-event" width="250" height="100"/>
         <image name="logo-mbk" width="200" height="80"/>

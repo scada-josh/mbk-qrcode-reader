@@ -36,6 +36,28 @@ class EmployeeInfoViewController: UIViewController {
 
     @IBAction func btnSave(sender: AnyObject) {
         
+//        Alamofire.request(myRouter.UpdateAttendeeStatus())
+//            .responseString { response in
+//                if let receivedString = response.result.value {
+//                    print(receivedString)
+//                }
+//        }
+        
+        Alamofire.request(.POST, "http://169.254.65.182/mbk/build/src/api/eventManager/updateAttendeeStatus/",
+            parameters: ["event_id": self.myEventID, "user_id": self.myQRcode])
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                }
+            }
+        
+        
+        
         // If you want to go back to the root view controller
         navigationController?.popToRootViewControllerAnimated(true)
     }

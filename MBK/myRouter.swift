@@ -14,9 +14,10 @@ enum myRouter: URLRequestConvertible {
     static let baseURLString:String = "http://169.254.65.182/mbk/build/src/api"
     //static let baseURLString:String = "https://api.github.com"
     
-    case GetEvent()     // GET http://localhost/mbk/build/src/api/eventManager/listEventForMobile/
-    case GetUserByID(String)  // GET http://localhost/mbk/build/src/api/userManager/getUserByID/:userID
-    case GetPublic()    // GET https://api.github.com/gists/public
+    case GetEvent()             // GET http://localhost/mbk/build/src/api/eventManager/listEventForMobile/
+    case GetUserByID(String)    // GET http://localhost/mbk/build/src/api/userManager/getUserByID/:userID
+    case UpdateAttendeeStatus() // POST http://localhost/mbk/build/src/api/eventManager/updateAttendeeStatus/
+    case GetPublic()            // GET https://api.github.com/gists/public
     
     var URLRequest: NSMutableURLRequest {
         
@@ -26,6 +27,8 @@ enum myRouter: URLRequestConvertible {
                 return .GET
             case .GetUserByID:
                 return .GET
+            case .UpdateAttendeeStatus:
+                return .POST
             case .GetPublic:
                 return .GET
             }
@@ -38,6 +41,8 @@ enum myRouter: URLRequestConvertible {
                 return ("/eventManager/listEventForMobile/", nil)
             case .GetUserByID(let userID):
                 return ("/userManager/getUserByID/\(userID)", nil)
+            case .UpdateAttendeeStatus:
+                return ("/eventManager/updateAttendeeStatus/", nil)
             case .GetPublic:
                 return ("/gists/public", nil)
             }
