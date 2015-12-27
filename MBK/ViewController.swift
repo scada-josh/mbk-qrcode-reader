@@ -95,7 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func btnGetListEvents(sender: AnyObject) {
                     
-            let postEndpoint: String = "http://192.168.1.35/mbk/build/src/api/eventManager/listEvent/"
+            let postEndpoint: String = "http://169.254.65.182/mbk/build/src/api/eventManager/listEvent/"
             Alamofire.request(.POST, postEndpoint)
             .responseJSON { response in
                     
